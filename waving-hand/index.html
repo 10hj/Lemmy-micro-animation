@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waving Hand</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .stage {
+      width: min(86vw, 560px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .hand {
+      width: 76%;
+      height: auto;
+      display: block;
+      transform-origin: 48% 88%;
+      animation: wave 1.28s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+      will-change: transform;
+    }
+
+    @keyframes wave {
+      0%, 100% {
+        transform: rotate(-8deg) translateY(0) scale(1);
+      }
+
+      18% {
+        transform: rotate(12deg) translateY(-1.5%) scaleX(0.985) scaleY(1.01);
+      }
+
+      36% {
+        transform: rotate(-15deg) translateY(1%) scaleX(1.012) scaleY(0.99);
+      }
+
+      54% {
+        transform: rotate(10deg) translateY(-0.8%) scaleX(0.99) scaleY(1.006);
+      }
+
+      72% {
+        transform: rotate(-11deg) translateY(0.4%) scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hand {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="Animated waving hand">
+    <img class="hand" src="./Vector.svg" alt="Waving hand" />
+  </main>
+</body>
+</html>
