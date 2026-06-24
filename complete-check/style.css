@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage {
+  width: min(90vw, 560px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.complete-icon {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: iconPulse 2.6s ease-in-out infinite;
+}
+
+.ring {
+  fill: none;
+  stroke: url("#checkGradient");
+  stroke-width: 34;
+  stroke-linecap: round;
+  stroke-dasharray: 1194;
+  stroke-dashoffset: 1194;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  animation: drawRing 2.6s ease-in-out infinite;
+}
+
+.check-wrap {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: checkPop 2.6s ease-in-out infinite;
+}
+
+.check-svg {
+  display: block;
+  overflow: visible;
+}
+
+.check-fill {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.spark {
+  fill: #55c0e6;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sparkle 2.6s ease-in-out infinite;
+}
+
+.spark-two {
+  animation-delay: 0.08s;
+}
+
+.spark-three {
+  animation-delay: 0.16s;
+}
+
+@keyframes drawRing {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 1194;
+    transform: rotate(-90deg) scale(0.92);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  46%, 82% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg) scale(0.96);
+  }
+}
+
+@keyframes checkPop {
+  0%, 36% {
+    opacity: 0;
+    transform: scale(0.7);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  54% {
+    opacity: 1;
+    transform: scale(1.08);
+    clip-path: inset(0 0 0 0);
+  }
+
+  64%, 82% {
+    opacity: 1;
+    transform: scale(1);
+    clip-path: inset(0 0 0 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.96);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes sparkle {
+  0%, 48% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  58% {
+    opacity: 0.85;
+    transform: scale(1.2);
+  }
+
+  74%, 100% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  58% {
+    transform: scale(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .complete-icon,
+  .ring,
+  .check-wrap,
+  .spark {
+    animation: none;
+  }
+
+  .ring {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+
+  .check-wrap {
+    opacity: 1;
+    clip-path: none;
+  }
+}
