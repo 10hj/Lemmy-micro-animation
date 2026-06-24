@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage {
+  width: min(88vw, 620px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.scanner {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.face {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 0 18px rgba(105, 180, 255, 0.24));
+  animation: faceIdOrbit 3.2s linear infinite;
+}
+
+@keyframes faceIdOrbit {
+  0% {
+    opacity: 0.92;
+    transform: translate3d(0, -18px, 0) rotate(0deg);
+  }
+
+  12.5% {
+    opacity: 0.98;
+    transform: translate3d(13px, -13px, 0) rotate(3deg);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translate3d(18px, 0, 0) rotate(6deg);
+  }
+
+  37.5% {
+    opacity: 0.98;
+    transform: translate3d(13px, 13px, 0) rotate(3deg);
+  }
+
+  50% {
+    opacity: 0.94;
+    transform: translate3d(0, 18px, 0) rotate(0deg);
+  }
+
+  62.5% {
+    opacity: 0.98;
+    transform: translate3d(-13px, 13px, 0) rotate(-3deg);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translate3d(-18px, 0, 0) rotate(-6deg);
+  }
+
+  87.5% {
+    opacity: 0.98;
+    transform: translate3d(-13px, -13px, 0) rotate(-3deg);
+  }
+
+  100% {
+    opacity: 0.92;
+    transform: translate3d(0, -18px, 0) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .face {
+    animation: none;
+  }
+}
