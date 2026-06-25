@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage {
+  width: min(86vw, 560px);
+  aspect-ratio: 488 / 443;
+  display: grid;
+  place-items: center;
+}
+
+.voice {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 0 18px rgba(106, 164, 255, 0.24));
+}
+
+.bar {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: voicePulse 1.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.bar-center {
+  animation-duration: 1.75s;
+  --low: 0.92;
+  --mid: 1.04;
+  --high: 0.98;
+}
+
+.bar-mid-left {
+  animation-duration: 1.95s;
+  animation-delay: -0.32s;
+  --low: 0.86;
+  --mid: 1.07;
+  --high: 0.96;
+}
+
+.bar-mid-right {
+  animation-duration: 1.86s;
+  animation-delay: -0.58s;
+  --low: 0.88;
+  --mid: 1.06;
+  --high: 0.97;
+}
+
+.bar-small-left {
+  animation-duration: 1.68s;
+  animation-delay: -0.16s;
+  --low: 0.78;
+  --mid: 1.1;
+  --high: 0.92;
+}
+
+.bar-small-right {
+  animation-duration: 1.72s;
+  animation-delay: -0.74s;
+  --low: 0.8;
+  --mid: 1.09;
+  --high: 0.93;
+}
+
+.bar-tiny-left {
+  animation-duration: 1.52s;
+  animation-delay: -0.48s;
+  --low: 0.72;
+  --mid: 1.12;
+  --high: 0.9;
+}
+
+.bar-tiny-right {
+  animation-duration: 1.58s;
+  animation-delay: -0.88s;
+  --low: 0.74;
+  --mid: 1.11;
+  --high: 0.91;
+}
+
+@keyframes voicePulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scaleY(var(--low));
+  }
+
+  24% {
+    opacity: 1;
+    transform: scaleY(var(--mid));
+  }
+
+  46% {
+    opacity: 0.96;
+    transform: scaleY(var(--high));
+  }
+
+  68% {
+    opacity: 1;
+    transform: scaleY(1.04);
+  }
+
+  86% {
+    opacity: 0.94;
+    transform: scaleY(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    animation: none;
+  }
+}
