@@ -1,0 +1,182 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage {
+  width: min(92vw, 760px);
+  aspect-ratio: 936 / 506;
+  display: grid;
+  place-items: center;
+}
+
+.scene {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.cup {
+  transform-box: fill-box;
+  transform-origin: 55% 85%;
+  animation: cupBreath 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.steam {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.steam path {
+  filter: blur(1.1px);
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+  animation: steamSway 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.steam-left {
+  animation: steamRiseLeft 4.8s linear infinite;
+}
+
+.steam-left path {
+  animation-duration: 4.2s;
+}
+
+.steam-center {
+  animation: steamRiseCenter 5.4s linear infinite;
+  animation-delay: -1.5s;
+}
+
+.steam-center path {
+  animation-duration: 4.8s;
+  animation-delay: -0.9s;
+}
+
+.steam-right {
+  animation: steamRiseRight 5s linear infinite;
+  animation-delay: -2.7s;
+}
+
+.steam-right path {
+  animation-duration: 4.4s;
+  animation-delay: -1.8s;
+}
+
+@keyframes cupBreath {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(2px) scale(1.003);
+  }
+}
+
+@keyframes steamSway {
+  0% {
+    transform: translateX(-3px) rotate(-1.2deg) scaleX(0.98);
+  }
+
+  50% {
+    transform: translateX(5px) rotate(1.4deg) scaleX(1.04);
+  }
+
+  100% {
+    transform: translateX(-3px) rotate(-1.2deg) scaleX(0.98);
+  }
+}
+
+@keyframes steamRiseLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scale(0.9);
+  }
+
+  16% {
+    opacity: 0.68;
+  }
+
+  48% {
+    opacity: 0.58;
+    transform: translate3d(-10px, -8px, 0) scale(1.05);
+  }
+
+  78% {
+    opacity: 0.22;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-18px, -54px, 0) scale(1.22);
+  }
+}
+
+@keyframes steamRiseCenter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.88);
+  }
+
+  18% {
+    opacity: 0.72;
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translate3d(12px, -12px, 0) scale(1.07);
+  }
+
+  78% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(20px, -62px, 0) scale(1.24);
+  }
+}
+
+@keyframes steamRiseRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.9);
+  }
+
+  17% {
+    opacity: 0.66;
+  }
+
+  52% {
+    opacity: 0.54;
+    transform: translate3d(-9px, -10px, 0) scale(1.06);
+  }
+
+  80% {
+    opacity: 0.18;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-17px, -50px, 0) scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cup,
+  .steam {
+    animation: none;
+  }
+}
